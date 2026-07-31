@@ -74,3 +74,8 @@ Ad = sys_d.A;
 Bd = sys_d.B;
 Cd = sys_d.C;
 Dd = sys_d.D;
+
+%% LQR Controller
+Q_lqr = diag([80 100 75 100]);
+R_lqr = 50;
+K = dlqr(Ad,Bd,Q_lqr,R_lqr);
