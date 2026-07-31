@@ -79,3 +79,21 @@ Dd = sys_d.D;
 Q_lqr = diag([80 100 75 100]);
 R_lqr = 50;
 K = dlqr(Ad,Bd,Q_lqr,R_lqr);
+
+%% LQI Controller
+
+% Augmented Model
+Ai = [Ad, zeros(4,1);
+     -Ts*Cd(1,:), 1];
+
+Bi = [Bd;
+      0];
+
+Q_lqi = diag([75 100 75 100 250]);  
+R_lqi = 75;
+
+K_aug = dlqr(Ai, Bi, Q_lqi, R_lqi);
+
+Kx = K_aug(1:4);
+Ki = K_aug(5);
+
