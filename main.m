@@ -184,3 +184,12 @@ ref_track_mpc = setuniformtime(ref_track_mpc, ...
     'Interval', Ts);
 
 % plot(ref_track_mpc)
+
+%% Swing Up Zero Input
+
+swingUpZeros = [zeros(size(t_ref))];
+swingUpZero = timeseries(swingUpZeros, t_ref);
+swingUpZero = setuniformtime(swingUpZero, ...
+    'StartTime', 0, ...
+    'Interval', Ts);
+% plot(swingUpZero)
