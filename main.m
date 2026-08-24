@@ -160,3 +160,27 @@ mpcobj.Model.Nominal.Y = [0;0];
 
 % Initial MPC state
 xmpc = mpcstate(mpcobj);
+
+%% MPC reference tracking trajectory
+A = 0.70;      % position amplitude 
+f = 0.065;      % frequency 
+
+x_ref = A*sin(2*pi*f*t_ref);
+x_dot_ref = gradient(x_ref,Ts);
+
+
+inputType = 'stabilization';
+switch lower(inputType)
+    case 'stabilization'
+        xref_state_data = [zeros(size(t_ref)),zeros(size(t_ref)), zeros(size(t_ref)), zeros(size(t_ref))];
+    case 'reference'
+        xref_state_data = [x_ref,zeros(size(t_ref)), x_ref_dot, zeros(size(t_ref))];
+end
+
+
+ref_track_mpc = timeseries(xref_state_data, t_ref);
+ref_track_mpc = setuniformtime(ref_track_mpc, ...
+    'StartTime', 0, ...
+    'Interval', Ts);
+
+% plot(ref_track_mpc)
