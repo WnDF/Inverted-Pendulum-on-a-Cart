@@ -97,3 +97,26 @@ K_aug = dlqr(Ai, Bi, Q_lqi, R_lqi);
 Kx = K_aug(1:4);
 Ki = K_aug(5);
 
+%% Reference Tracking Signal for LQI
+
+t_ref = (0:Ts:Ttotal)';
+
+A = 0.70;      % position amplitude
+f = 0.065;      % frequency
+
+x_ref = A*sin(2*pi*f*t_ref);
+x_ref_dot = gradient(x_ref, Ts);
+
+inputType = 'reference';
+switch lower(inputType)
+    case 'stabilization'
+        xref_state_data = [zeros(size(t_ref)),zeros(size(t_ref)), zeros(size(t_ref)), zeros(size(t_ref))];
+    case 'reference'
+        xref_state_data = [x_ref,zeros(size(t_ref)), x_ref_dot, zeros(size(t_ref))];
+end
+
+ref_track = timeseries(xref_state_data, t_ref);
+ref_track = setuniformtime(ref_track, ...
+    'StartTime', 0, ...
+    'Interval', Ts);
+% plot(ref_track)
