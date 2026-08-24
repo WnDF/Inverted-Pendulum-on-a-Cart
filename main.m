@@ -120,3 +120,43 @@ ref_track = setuniformtime(ref_track, ...
     'StartTime', 0, ...
     'Interval', Ts);
 % plot(ref_track)
+
+%% MPC
+C_mpc = eye(4);
+D_mpc = zeros(4,1);
+
+% Define MPC plant
+plant_mpc = ss(Ad, Bd, C_mpc, D_mpc, Ts);
+
+% MPC horizons
+PredictionHorizon = 40;   % 0.4 s
+ControlHorizon    = 10;   % 0.1 s
+
+% Defining MPC object
+mpcobj = mpc(plant_mpc, Ts, PredictionHorizon, ControlHorizon);
+
+% Allow own Kalman filter - not using built-in
+setEstimator(mpcobj,'custom');
+setoutdist(mpcobj,'model',tf(zeros(4,1)))
+
+mpcobj.MV.Min = -0.75;
+mpcobj.MV.Max =  0.75;
+
+% Output constraints
+mpcobj.OV(1).Min = -0.8;
+mpcobj.OV(1).Max =  0.8;
+
+mpcobj.OV(2).Min = -0.2;
+mpcobj.OV(2).Max =  0.2;
+
+% Weights
+mpcobj.Weights.OV = [95 100 30 10];      
+mpcobj.Weights.MV = 12.5;
+
+% Nominal conditions
+mpcobj.Model.Nominal.X = [0;0;0;0];
+mpcobj.Model.Nominal.U = ue;
+mpcobj.Model.Nominal.Y = [0;0];
+
+% Initial MPC state
+xmpc = mpcstate(mpcobj);
