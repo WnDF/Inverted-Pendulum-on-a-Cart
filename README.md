@@ -124,13 +124,11 @@ With the cart clamped, the pendulum oscillates freely from an initial angle of a
 leaving only $a_1$ and $k_3$ identifiable.
 
 <p align="center">
-  <img src="Plots/Pendulum%20Dynamics%20ID/pendulumDynamicsData.png" width="32%"/>
-  <img src="Plots/Pendulum%20Dynamics%20ID/pendulumDynamicsTraining.png" width="32%"/>
-  <img src="Plots/Pendulum%20Dynamics%20ID/pendulumDynamicsValidation.png" width="32%"/>
+  <img src="Plots/Pendulum%20Dynamics%20ID/pendulumDynamicsTraining.png" width="48%"/>
+  <img src="Plots/Pendulum%20Dynamics%20ID/pendulumDynamicsValidation.png" width="48%"/>
 </p>
 
-From left to right, the measured free oscillation record, the estimation fit (99.58 %), and the
-validation fit (99.48 %).
+Estimation fit (99.58 %) and validation fit (99.48 %).
 
 ### Cart dynamics (Stage 2)
 
@@ -139,13 +137,11 @@ sequence with unactuated intervals that expose the friction, identifying $k_1$, 
 $k_d$.
 
 <p align="center">
-  <img src="Plots/Cart%20Dynamics%20ID/cartDynamicsData.png" width="32%"/>
-  <img src="Plots/Cart%20Dynamics%20ID/cartDynamicsTraining.png" width="32%"/>
-  <img src="Plots/Cart%20Dynamics%20ID/cartDynamicsValidation.png" width="32%"/>
+  <img src="Plots/Cart%20Dynamics%20ID/cartDynamicsTraining.png" width="48%"/>
+  <img src="Plots/Cart%20Dynamics%20ID/cartDynamicsValidation.png" width="48%"/>
 </p>
 
-From left to right, the PWM excitation with the cart response, the estimation fit (94.24 %), and
-the validation fit (95.64 %).
+Estimation fit (94.24 %) and validation fit (95.64 %).
 
 ### Coupled cart and pendulum dynamics (Stage 3)
 
@@ -153,13 +149,11 @@ With both bodies free, all seven parameters are estimated jointly under the full
 with $a_2 = 1/\ell$ fixed and the rest bounded to ±25 % of their stage 1 and stage 2 values.
 
 <p align="center">
-  <img src="Plots/Coupled%20Dynamics%20ID/coupledDynamicsData.png" width="32%"/>
-  <img src="Plots/Coupled%20Dynamics%20ID/coupledDynamicsTraining.png" width="32%"/>
-  <img src="Plots/Coupled%20Dynamics%20ID/coupledDynamicsValidation.png" width="32%"/>
+  <img src="Plots/Coupled%20Dynamics%20ID/coupledDynamicsTraining.png" width="48%"/>
+  <img src="Plots/Coupled%20Dynamics%20ID/coupledDynamicsValidation.png" width="48%"/>
 </p>
 
-From left to right, the coupled excitation with the position and angle responses, the estimation
-fit (93.9 % cart, 77.6 % pendulum), and the validation fit (96.8 % and 83.3 %).
+Estimation fit (93.9 % cart, 77.6 % pendulum) and validation fit (96.8 % and 83.3 %).
 
 ### Identified parameters
 
