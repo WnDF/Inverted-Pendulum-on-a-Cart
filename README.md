@@ -1,6 +1,6 @@
 # Modelling, Identification, Estimation and Control of an INTECO Pendulum on a Cart
 
-A complete control pipeline of the INTECO pendulum on a cart rig, covering dynamical
+A complete control pipeline of the INTECO pendulum on a cart (https://www.inteco.com.pl/products/pendulum-cart-control-system/), covering dynamical
 modelling by the Lagrangian method, nonlinear grey box parameter identification, state estimation
 with a Kalman filter, and the design of LQR, LQI and MPC controllers for the regulation,
 reference tracking and swing up problems. The implementation is in MATLAB and Simulink.
